@@ -1,13 +1,27 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { styled } from "styled-components";
+
+const Navigation = styled.nav`
+	display: flex;
+	gap: 30px;
+`;
+
+const StyledNavLink = styled(NavLink)`
+	color: red;
+
+	&.active {
+		color: blue;
+	}
+`;
 
 export default function Layout() {
 	return (
 		<>
-			<nav>
-				<NavLink to="/">Main</NavLink>
-				<NavLink to="login">Login</NavLink>
-				<NavLink to="signup">Signup</NavLink>
-			</nav>
+			<Navigation>
+				<StyledNavLink to="/">Main</StyledNavLink>
+				<StyledNavLink to="login">Login</StyledNavLink>
+				<StyledNavLink to="signup">Signup</StyledNavLink>
+			</Navigation>
 			<Outlet />
 		</>
 	);
