@@ -2,21 +2,25 @@ import { Formik } from "formik";
 import StyledFormikInput from "components/StyledFormikInput/StyledFormikInput";
 import { SignupSchema } from "schemas/schemas";
 
-import { StyledForm, SubmitBtn } from "./SignupPage.styled";
+import { SubmitBtn } from "./SignupPage.styled";
+import StyledForm from "components/StyledForm/StyledForm.styled";
+
+const initialValues = {
+	firstName: "",
+	lastName: "",
+	email: "",
+	password: "",
+	confirmPassword: "",
+};
 
 export default function SignupPage() {
 	return (
 		<Formik
-			initialValues={{
-				firstName: "",
-				lastName: "",
-				email: "",
-				password: "",
-				confirmPassword: "",
-			}}
+			initialValues={initialValues}
 			validationSchema={SignupSchema}
 			onSubmit={(values, { resetForm }) => {
 				console.log("values", values);
+
 				resetForm();
 			}}
 		>
@@ -28,7 +32,7 @@ export default function SignupPage() {
 				<StyledFormikInput $labelName="Password" type="password" name="password" />
 				<StyledFormikInput $labelName="Confirm password" type="password" name="confirmPassword" />
 
-				<SubmitBtn type="submit">Submit</SubmitBtn>
+				<SubmitBtn type="submit">Sign Up</SubmitBtn>
 			</StyledForm>
 		</Formik>
 	);

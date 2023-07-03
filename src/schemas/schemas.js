@@ -18,4 +18,12 @@ const SignupSchema = object().shape({
 		.required("*required"),
 });
 
-export { SignupSchema };
+const LoginSchema = object().shape({
+	email: string().email().required("*required"),
+	password: string()
+		.min(8, "Пароль повинен містити не менше 8 символів")
+		.max(32, "Пароль повинен містити не більше 32 символів")
+		.required("*required"),
+});
+
+export { SignupSchema, LoginSchema };

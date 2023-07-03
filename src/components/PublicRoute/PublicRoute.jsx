@@ -1,3 +1,3 @@
-export default function PublicRoute() {
-	return <div>PublicRoute</div>;
+export default function PublicRoute({ children }) {
+	return children;
 }
