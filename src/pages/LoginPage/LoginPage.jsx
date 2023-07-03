@@ -18,8 +18,8 @@ export default function LoginPage() {
 			}}
 		>
 			<StyledForm>
-				<StyledFormikInput $labelName="email" name="email" type="email" />
-				<StyledFormikInput $labelName="password" name="password" type="password" />
+				<StyledFormikInput $labelName="Email" name="email" type="email" />
+				<StyledFormikInput $labelName="Password" name="password" type="password" />
 
 				<button type="submit">Login</button>
 			</StyledForm>
