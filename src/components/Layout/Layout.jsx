@@ -1,4 +1,7 @@
+import PrivatRoute from "components/PrivatRoute/PrivatRoute";
+import { useDispatch } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
+import { toggleAuth } from "redux/auth/authSlice";
 import { styled } from "styled-components";
 
 const Navigation = styled.nav`
@@ -15,12 +18,22 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 export default function Layout() {
+	const disp = useDispatch();
 	return (
 		<>
 			<Navigation>
 				<StyledNavLink to="/">Main</StyledNavLink>
-				<StyledNavLink to="login">Login</StyledNavLink>
-				<StyledNavLink to="signup">Signup</StyledNavLink>
+				<PrivatRoute>
+					<StyledNavLink to="login">Login</StyledNavLink>
+					<StyledNavLink to="signup">Signup</StyledNavLink>
+				</PrivatRoute>
+				<button
+					onClick={() => {
+						disp(toggleAuth());
+					}}
+				>
+					Auth
+				</button>
 			</Navigation>
 			<Outlet />
 		</>
