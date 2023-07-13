@@ -4,6 +4,8 @@ import { SignupSchema } from "schemas/schemas";
 
 import { SubmitBtn } from "./SignupPage.styled";
 import StyledForm from "components/StyledForm/StyledForm.styled";
+import { useDispatch } from "react-redux";
+import { signup } from "redux/auth/operations";
 
 const initialValues = {
 	firstName: "",
@@ -14,13 +16,15 @@ const initialValues = {
 };
 
 export default function SignupPage() {
+	const dispatch = useDispatch();
 	return (
 		<Formik
 			initialValues={initialValues}
 			validationSchema={SignupSchema}
-			onSubmit={(values, { resetForm }) => {
-				console.log("values", values);
+			onSubmit={({ firstName, lastName, email, password }, { resetForm }) => {
+				console.log("values", { firstName, lastName, email, password });
 
+				dispatch(signup({ firstName, lastName, email, password }));
 				resetForm();
 			}}
 		>

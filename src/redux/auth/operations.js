@@ -1,19 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { post, defaults } from "axios";
+import axios from "axios";
 
-defaults.baseURL = "https://connections-api.herokuapp.com/";
+axios.defaults.baseURL = "http://localhost:8080/";
 
 const setAuthJWTHeader = token => {
-	defaults.headers.common.Authorization = `Bearer ${token}`;
+	axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthJWTHeader = () => {
-	defaults.headers.common.Authorization = "";
+	axios.defaults.headers.common.Authorization = "";
 };
 
 const login = createAsyncThunk("auth/login", async (cred, { rejectWithValue }) => {
 	try {
-		const { data } = await post(``, cred);
+		const { data } = await axios.post("auth/login", cred);
 		setAuthJWTHeader(data.token);
 		return data;
 	} catch (e) {
@@ -23,7 +23,7 @@ const login = createAsyncThunk("auth/login", async (cred, { rejectWithValue }) =
 
 const signup = createAsyncThunk("auth/signup", async (cred, { rejectWithValue }) => {
 	try {
-		const { data } = await post(``, cred);
+		const { data } = await axios.post("auth/signup", cred);
 		setAuthJWTHeader(data.token);
 		return data;
 	} catch (e) {
@@ -33,7 +33,7 @@ const signup = createAsyncThunk("auth/signup", async (cred, { rejectWithValue })
 
 const logout = createAsyncThunk("auth/logout", async (_, { rejectWithValue }) => {
 	try {
-		const { data } = await post(``);
+		const { data } = await axios.post("auth/logout");
 		clearAuthJWTHeader();
 		return data;
 	} catch (e) {
