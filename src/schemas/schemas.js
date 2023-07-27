@@ -13,15 +13,15 @@ const emailSchema = string()
 		/^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/,
 		"Email must be a valid email address",
 	)
-	.required("*required")
-	.test("username-validation", "Username must meet requirements", value => {
-		const usernameRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+$/;
-		return usernameRegex.test(value);
-	})
-	.test("domain-validation", "Domain must meet requirements", value => {
-		const domainRegex = /^[a-zA-Z0-9]+([\]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
-		return domainRegex.test(value);
-	});
+	.required("*required");
+// .test("username-validation", "Username must meet requirements", value => {
+// 	const usernameRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+$/;
+// 	return usernameRegex.test(value);
+// })
+// .test("domain-validation", "Domain must meet requirements", value => {
+// 	const domainRegex = /^[a-zA-Z0-9]+([\]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
+// 	return domainRegex.test(value);
+// });
 
 const passwordSchema = string()
 	.min(8, "Password must be at least 8 characters")
