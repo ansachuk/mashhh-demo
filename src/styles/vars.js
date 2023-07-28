@@ -1,4 +1,4 @@
-const root = {
+const root = Object.freeze({
 	// ! font vars
 	mainFontcolor: "#4d4d4d",
 	secondaryFontcolor: "#000",
@@ -22,6 +22,6 @@ const root = {
 	//* transition vars
 	transDuration: "",
 	transTimeFunc: "",
-};
+});
 
 export default root;
