@@ -20,7 +20,7 @@ const emailSchema = string()
 		return usernameRegex.test(username);
 	})
 	.test("domain-validation", "Domain must meet requirements", value => {
-		const domain = value.split("@")[0];
+		const domain = value.split("@")[1];
 		const domainRegex = /^[a-zA-Z0-9]+([\]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
 		return domainRegex.test(domain);
 	});
