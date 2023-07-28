@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mashhh-demo/static/css/main.4980b125.css",
-    "main.js": "/mashhh-demo/static/js/main.fef079bb.js",
+    "main.js": "/mashhh-demo/static/js/main.130109f8.js",
     "index.html": "/mashhh-demo/index.html",
     "main.4980b125.css.map": "/mashhh-demo/static/css/main.4980b125.css.map",
-    "main.fef079bb.js.map": "/mashhh-demo/static/js/main.fef079bb.js.map"
+    "main.130109f8.js.map": "/mashhh-demo/static/js/main.130109f8.js.map"
   },
   "entrypoints": [
     "static/css/main.4980b125.css",
-    "static/js/main.fef079bb.js"
+    "static/js/main.130109f8.js"
   ]
 }
