@@ -13,6 +13,7 @@ const emailSchema = string()
 		/^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/,
 		"Email must be a valid email address",
 	)
+	.transform(value => value.trim())
 	.required("*required")
 	.test("username-validation", "Username must meet requirements", value => {
 		const username = value.split("@")[0];
