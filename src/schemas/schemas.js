@@ -1,9 +1,9 @@
 import { object, ref, string } from "yup";
 
 const nameStringSchema = string()
-	.min(1, "Password must be at least 1 characters")
-	.max(255, "Password must be at least 255 characters")
-	.matches(/^[A-Za-zА-Яа-я'-]+$/, "Password must contain only uppercase and lowercase Latin and Cyrillic letters, hyphens, and apostrophes")
+	.min(1, "Field must be at least 1 characters")
+	.max(255, "Field must be at least 255 characters")
+	.matches(/^[A-Za-zА-ЯҐЄІЇа-яґєії'-]+$/, "Field must contain only uppercase and lowercase Latin and Cyrillic letters, hyphens, and apostrophes")
 	.nonNullable()
 	.required("*required");
 
@@ -13,15 +13,17 @@ const emailSchema = string()
 		/^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/,
 		"Email must be a valid email address",
 	)
-	.required("*required");
-// .test("username-validation", "Username must meet requirements", value => {
-// 	const usernameRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+$/;
-// 	return usernameRegex.test(value);
-// })
-// .test("domain-validation", "Domain must meet requirements", value => {
-// 	const domainRegex = /^[a-zA-Z0-9]+([\]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
-// 	return domainRegex.test(value);
-// });
+	.required("*required")
+	.test("username-validation", "Username must meet requirements", value => {
+		const username = value.split("@")[0];
+		const usernameRegex = /^[a-zA-Z0-9!#$%&'*+/=?^_{|}~-]+$/;
+		return usernameRegex.test(username);
+	})
+	.test("domain-validation", "Domain must meet requirements", value => {
+		const domain = value.split("@")[0];
+		const domainRegex = /^[a-zA-Z0-9]+([\]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/;
+		return domainRegex.test(domain);
+	});
 
 const passwordSchema = string()
 	.min(8, "Password must be at least 8 characters")
