@@ -1,3 +1,3 @@
 # mashhh-demo
 
-## by @ansachuk
+## DEPRECATED
